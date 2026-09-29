@@ -10,6 +10,15 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/steven-bao1">ChengZhu Bao</a>,
+  <a href="https://xianglongyan.github.io/">Xianglong Yan</a>,
+  <a href="https://github.com/ZTA2785">Tianao Zhang</a>,
+  <a href="https://github.com/ThrowBug">Jiaqi Chen</a>,
+  Shaoqiu Zhang,
+  <a href="http://yulunzhang.com/">Yulun Zhang</a>
+</p>
+
 ---
 
 #### 🔥 News
