@@ -32,8 +32,7 @@
 
 ## 🔗 Contents
 
-- [ ] Quantization-aware Reasoning Behavior Analysis (QRBA)
-- [ ] Token-Specific Penalty Determination (TSPD)
+- [ ] Implementation
 - [ ] [Results](#results)
 - [ ] [Citation](#citation)
 - [ ] [Acknowledgements](#acknowledgements)
