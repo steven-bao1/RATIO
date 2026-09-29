@@ -14,7 +14,7 @@
 
 #### 🔥 News
 
-- The method overview and main experimental results are available. Code and implementation details are coming soon!
+- **2026-05-12:** This repository is officially released!
 
 ---
 
@@ -28,57 +28,21 @@
 
 ## ⚒️ TODO
 
-- [x] Release the method overview and main experimental results
-- [ ] Release QRBA token identification and validation code
-- [ ] Release TSPD penalty calibration and inference code
-- [ ] Release evaluation scripts and model-specific token configurations
-- [ ] Add installation and usage instructions
+- [ ] Complete this repository
 
 ## 🔗 Contents
 
-- [Method](#method)
-- [Models](#models)
-- [Results](#results)
-- [Citation](#citation)
-- [Acknowledgements](#acknowledgements)
-
-<a id="method"></a>
-
-## 🧩 Method
-
-RATIO is a **training-free** framework that reduces unnecessary reasoning in quantized models through model-specific token selection and token-specific logit penalties.
-
-1. **Quantization-aware Reasoning Behavior Analysis (QRBA).** Quantization-Sensitive Token Identification (QSTI) compares full-precision and quantized models under identical reference prefixes to identify tokens with increased probability under both AWQ and GPTQ. Reasoning-context-aware Token Validation (RTV) then validates these candidates using actual quantized reasoning trajectories, combining probability shifts, associations with incorrect answers and repetitive reasoning, and contextual review.
-2. **Token-Specific Penalty Determination (TSPD).** Using full-precision guidance, TSPD computes token-level log-odds corrections on fixed reference trajectories. It aggregates positive-shift events with a median for each quantizer, takes the smaller correction from AWQ and GPTQ, and normalizes by the median correction across the selected token set.
-3. **Calibrated inference.** The resulting static penalties are subtracted from the logits of the selected tokens during generation. The full-precision model is used for offline analysis and calibration; inference uses the quantized model with the calibrated penalties.
-
-<a id="models"></a>
-
-## 🤖 Models
-
-We evaluate RATIO on the following reasoning models:
-
-| Model | Setting |
-| --- | --- |
-| DeepSeek-R1-Distill-Qwen-1.5B | BF16, AWQ-W3, GPTQ-W3 |
-| DeepSeek-R1-Distill-Qwen-7B | BF16, AWQ-W3, GPTQ-W3 |
-| DeepSeek-R1-Distill-Qwen-14B | BF16, AWQ-W3, GPTQ-W3 |
-| DeepSeek-R1-Distill-Llama-8B | BF16, AWQ-W3, GPTQ-W3 |
-| Qwen3-4B (thinking mode) | BF16, AWQ-W3, GPTQ-W3 |
-
-Both AWQ and GPTQ use **3-bit weight quantization with a group size of 128**. Evaluation uses a temperature of **0.6**, top-p of **0.95**, and a maximum generation budget of **65,536 tokens**.
+- [ ] Post-training quantization
+- [ ] Models
+- [ ] [Results](#results)
+- [ ] [Citation](#citation)
+- [ ] [Acknowledgements](#acknowledgements)
 
 <a id="results"></a>
 
 ## 🔎 Results
 
-We evaluate answer accuracy and CoT length on **AIME, GPQA-Diamond, MATH-500, GSM8K, and HumanEval**, comparing RATIO with uncalibrated quantized models and fixed-penalty decoding based on manually selected overthinking markers.
-
-RATIO reduces average CoT length across all evaluated model–quantizer combinations while generally preserving or improving average accuracy. Highlights relative to the corresponding uncalibrated quantized baselines include:
-
-- **Qwen-1.5B / AWQ-W3:** average accuracy increases from **30.88% to 40.66%** (+9.78 percentage points), while average CoT length decreases by **51.34%**.
-- **Qwen-1.5B / GPTQ-W3:** average accuracy increases from **33.82% to 37.40%** (+3.58 percentage points), while average CoT length decreases by **25.66%**.
-- **Qwen3-4B / GPTQ-W3:** average accuracy increases from **55.72% to 59.21%** (+3.49 percentage points), while average CoT length decreases by **17.28%**.
+RATIO reduces CoT length while generally preserving or improving reasoning accuracy across AIME, GPQA-Diamond, MATH-500, GSM8K, and HumanEval under AWQ-W3 and GPTQ-W3 quantization.
 
 <details>
 <summary>📊 Click to view the full experimental results</summary>
