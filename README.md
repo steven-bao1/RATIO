@@ -14,7 +14,7 @@
 
 #### 🔥 News
 
-- **2026-05-12:** This repository is officially released!
+- **2026-09-29:** This repository is officially released!
 
 ---
 
@@ -32,8 +32,8 @@
 
 ## 🔗 Contents
 
-- [ ] Post-training quantization
-- [ ] Models
+- [ ] Quantization-aware Reasoning Behavior Analysis (QRBA)
+- [ ] Token-Specific Penalty Determination (TSPD)
 - [ ] [Results](#results)
 - [ ] [Citation](#citation)
 - [ ] [Acknowledgements](#acknowledgements)
