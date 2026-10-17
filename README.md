@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/arXiv-2609.39801-b31b1b.svg?logo=arxiv" alt="arXiv">
   </a>
   <a href="https://github.com/steven-bao1/RATIO/stargazers">
-    <img src="https://img.shields.io/github/stars/steven-bao1/RATIO?style=social&amp;label=Stars" alt="GitHub stars">
+    <img src="https://img.shields.io/github/stars/steven-bao1/RATIO?style=social&amp;label=Stars&amp;v=2" alt="GitHub stars">
   </a>
   <a href="https://github.com/steven-bao1/RATIO">
     <img src="https://visitor-badge.laobi.icu/badge?page_id=steven-bao1.RATIO&amp;right_color=violet" alt="Visitors">
