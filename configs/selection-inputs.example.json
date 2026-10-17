@@ -1,0 +1,74 @@
+{
+  "tokenizer": "/path/to/DeepSeek-R1-Distill-Qwen-1.5B",
+  "direction2": {
+    "bf16": "../outputs/collection/direction2/bf16/scores",
+    "awq": "../outputs/collection/direction2/awq/scores",
+    "gptq": "../outputs/collection/direction2/gptq/scores"
+  },
+  "direction1": [
+    {
+      "quantizer": "awq",
+      "benchmark": "aime",
+      "quant_scores": "../outputs/collection/direction1/aime/awq/quant-scores",
+      "bf16_scores": "../outputs/collection/direction1/aime/awq/bf16-scores",
+      "rollouts": "../outputs/collection/direction1/aime/awq/rollout/responses.json",
+      "bf16_rollouts": "../outputs/collection/direction1/aime/bf16/rollout/responses.json"
+    },
+    {
+      "quantizer": "awq",
+      "benchmark": "gpqa",
+      "quant_scores": "../outputs/collection/direction1/gpqa/awq/quant-scores",
+      "bf16_scores": "../outputs/collection/direction1/gpqa/awq/bf16-scores",
+      "rollouts": "../outputs/collection/direction1/gpqa/awq/rollout/responses.json",
+      "bf16_rollouts": "../outputs/collection/direction1/gpqa/bf16/rollout/responses.json"
+    },
+    {
+      "quantizer": "awq",
+      "benchmark": "gsm8k",
+      "quant_scores": "../outputs/collection/direction1/gsm8k/awq/quant-scores",
+      "bf16_scores": "../outputs/collection/direction1/gsm8k/awq/bf16-scores",
+      "rollouts": "../outputs/collection/direction1/gsm8k/awq/rollout/responses.json",
+      "bf16_rollouts": "../outputs/collection/direction1/gsm8k/bf16/rollout/responses.json"
+    },
+    {
+      "quantizer": "awq",
+      "benchmark": "math",
+      "quant_scores": "../outputs/collection/direction1/math/awq/quant-scores",
+      "bf16_scores": "../outputs/collection/direction1/math/awq/bf16-scores",
+      "rollouts": "../outputs/collection/direction1/math/awq/rollout/responses.json",
+      "bf16_rollouts": "../outputs/collection/direction1/math/bf16/rollout/responses.json"
+    },
+    {
+      "quantizer": "gptq",
+      "benchmark": "aime",
+      "quant_scores": "../outputs/collection/direction1/aime/gptq/quant-scores",
+      "bf16_scores": "../outputs/collection/direction1/aime/gptq/bf16-scores",
+      "rollouts": "../outputs/collection/direction1/aime/gptq/rollout/responses.json",
+      "bf16_rollouts": "../outputs/collection/direction1/aime/bf16/rollout/responses.json"
+    },
+    {
+      "quantizer": "gptq",
+      "benchmark": "gpqa",
+      "quant_scores": "../outputs/collection/direction1/gpqa/gptq/quant-scores",
+      "bf16_scores": "../outputs/collection/direction1/gpqa/gptq/bf16-scores",
+      "rollouts": "../outputs/collection/direction1/gpqa/gptq/rollout/responses.json",
+      "bf16_rollouts": "../outputs/collection/direction1/gpqa/bf16/rollout/responses.json"
+    },
+    {
+      "quantizer": "gptq",
+      "benchmark": "gsm8k",
+      "quant_scores": "../outputs/collection/direction1/gsm8k/gptq/quant-scores",
+      "bf16_scores": "../outputs/collection/direction1/gsm8k/gptq/bf16-scores",
+      "rollouts": "../outputs/collection/direction1/gsm8k/gptq/rollout/responses.json",
+      "bf16_rollouts": "../outputs/collection/direction1/gsm8k/bf16/rollout/responses.json"
+    },
+    {
+      "quantizer": "gptq",
+      "benchmark": "math",
+      "quant_scores": "../outputs/collection/direction1/math/gptq/quant-scores",
+      "bf16_scores": "../outputs/collection/direction1/math/gptq/bf16-scores",
+      "rollouts": "../outputs/collection/direction1/math/gptq/rollout/responses.json",
+      "bf16_rollouts": "../outputs/collection/direction1/math/bf16/rollout/responses.json"
+    }
+  ]
+}

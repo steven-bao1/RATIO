@@ -1,0 +1,117 @@
+diff --git a/vllm/model_executor/layers/sampler.py b/vllm/model_executor/layers/sampler.py
+index c2d12c4..f0e17d5 100644
+--- a/vllm/model_executor/layers/sampler.py
++++ b/vllm/model_executor/layers/sampler.py
+@@ -32,6 +32,94 @@ else:
+     flashinfer_top_k_top_p_sampling = None
+ 
+ 
++def _record_online_post_top_p(
++    logits: torch.Tensor,
++    sampling_metadata: SamplingMetadata,
++    sampling_tensors: SamplingTensors,
++    do_top_p_top_k: bool,
++    do_min_p: bool,
++) -> None:
++    """Send exact top-p rows to online recorders.
++
++    Fixed-prefix replay uses a later processor to force the reference token.
++    For that case, recorders retain the untouched sampling logits and this
++    hook applies vLLM's own batched masks to those snapshots. Normal online
++    generation continues to record the tensor used by the real sampler.
++    """
++    replay_records = []
++    for seq_group in sampling_metadata.seq_groups:
++        processors = seq_group.sampling_params.logits_processors or []
++        recorder_processors = [
++            processor
++            for processor in processors
++            if getattr(processor, "record_vllm_post_top_p", None) is not None
++        ]
++        if not recorder_processors:
++            continue
++        for seq_id, logits_row_idx in zip(
++            seq_group.seq_ids, seq_group.sample_indices
++        ):
++            sequence_data = seq_group.seq_data[seq_id]
++            for processor in recorder_processors:
++                recorder = processor.record_vllm_post_top_p
++                snapshot_getter = getattr(
++                    processor, "vllm_pre_intervention_sampling_logits", None
++                )
++                snapshot = (
++                    None
++                    if snapshot_getter is None
++                    else snapshot_getter(
++                        sequence_data.prompt_token_ids,
++                        sequence_data.output_token_ids,
++                    )
++                )
++                if snapshot is None:
++                    if (do_top_p_top_k
++                            and flashinfer_top_k_top_p_sampling is not None):
++                        raise RuntimeError(
++                            "Exact online nucleus recording is incompatible "
++                            "with the FlashInfer sampler. Disable "
++                            "VLLM_USE_FLASHINFER_SAMPLER."
++                        )
++                    recorder(
++                        sequence_data.prompt_token_ids,
++                        sequence_data.output_token_ids,
++                        logits[logits_row_idx],
++                    )
++                else:
++                    replay_records.append((
++                        recorder,
++                        sequence_data.prompt_token_ids,
++                        sequence_data.output_token_ids,
++                        logits_row_idx,
++                        snapshot,
++                    ))
++
++    if not replay_records:
++        return
++
++    replay_logits = torch.stack([record[-1] for record in replay_records])
++    row_indices = torch.tensor(
++        [record[3] for record in replay_records],
++        dtype=torch.long,
++        device=logits.device,
++    )
++    if do_top_p_top_k:
++        replay_logits = _apply_top_k_top_p(
++            replay_logits,
++            sampling_tensors.top_ps.index_select(0, row_indices),
++            sampling_tensors.top_ks.index_select(0, row_indices),
++        )
++    if do_min_p:
++        replay_logits = _apply_min_p(
++            replay_logits,
++            sampling_tensors.min_ps.index_select(0, row_indices).reshape(-1),
++        )
++    for replay_row, record in zip(replay_logits, replay_records):
++        recorder, prompt_token_ids, output_token_ids, _, _ = record
++        recorder(prompt_token_ids, output_token_ids, replay_row)
++
++
+ def get_sampler() -> torch.nn.Module:
+     if envs.VLLM_USE_V1:
+         # Lazy import: the v1 package isn't distributed
+@@ -277,6 +365,17 @@ class Sampler(nn.Module):
+         if do_min_p:
+             logits = _apply_min_p(logits, sampling_tensors.min_ps)
+ 
++        # Custom online recorders must observe this exact tensor: it already
++        # contains vLLM's real batched top-k/top-p/min-p mask and is the same
++        # tensor passed to softmax and sampling below.
++        _record_online_post_top_p(
++            logits,
++            sampling_metadata,
++            sampling_tensors,
++            do_top_p_top_k,
++            do_min_p,
++        )
++
+         # We use float32 for probabilities and log probabilities.
+         # Compute the probabilities.
+         probs = torch.softmax(logits, dim=-1, dtype=torch.float)

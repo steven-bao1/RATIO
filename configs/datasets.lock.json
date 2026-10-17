@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "datasets": {
+    "aime90": {
+      "repo_id": "xiaoyuanliu/AIME90",
+      "revision": "afe461e500e792e53352f7bc989291f09e7a78ec",
+      "directory": "AIME90",
+      "revision_source": "experiment_download_metadata",
+      "files": {
+        "README.md": "c3f2414b8f21cadb0eede966430ee8776a090ddb8136d19e51fb3cf018519ea8",
+        "data/train-00000-of-00001.parquet": "0ffa12583a05db2ed469bf25b7fdb719b0ff8b7588789fff4c6fa6d60f969a68"
+      }
+    },
+    "aime2025": {
+      "repo_id": "yentinglin/aime_2025",
+      "revision": "6f71d77b0b89b9dabe07ab466c51df33f514df7f",
+      "directory": "aime_2025",
+      "revision_source": "experiment_download_metadata",
+      "files": {
+        "README.md": "2c72cbca643fee38cfd72c43c872285a413d49920a3dc371e96cbc101a7047bf",
+        "data/train-00000-of-00001-243207c6c994e1bd.parquet": "b74b507c1a4de7c9fafd2c83dfe2ef7b80579bcf0e0a754a1765db0f21c205fc",
+        "part1/train-00000-of-00001-dc43217d3ce48ea5.parquet": "79ae9c3bf26406b114e7750ee5e2a59e5673b6d7d7068acf8a35e38678b892d8",
+        "part2/train-00000-of-00001-7d55578242a423ef.parquet": "e4ca8c01d117a2073dc27110e6fba8980b89511bf867f505017f375abaf65561"
+      }
+    },
+    "math500": {
+      "repo_id": "HuggingFaceH4/MATH-500",
+      "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+      "directory": "MATH-500",
+      "revision_source": "experiment_download_metadata",
+      "files": {
+        "README.md": "5d32f78943f75423da61419c5bb98cee964d5a29183b11a5294f661fb96f69f7",
+        "test.jsonl": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132"
+      }
+    },
+    "gsm8k": {
+      "repo_id": "openai/gsm8k",
+      "revision": "740312add88f781978c0658806c59bc2815b9866",
+      "directory": "gsm8k",
+      "revision_source": "experiment_download_metadata",
+      "files": {
+        "README.md": "a17e882503578c9e324560630e31017617714ee025c87cf4fea6fd916895f3c1",
+        "main/train-00000-of-00001.parquet": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+        "main/test-00000-of-00001.parquet": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59",
+        "socratic/train-00000-of-00001.parquet": "54eb5fd2105a9126ac6410541b2e9dbe0199701258957c9af02d9ed675c90378",
+        "socratic/test-00000-of-00001.parquet": "477dba7028204b465491b8f346ec774262ccd77147d942a0881e94cc6da7c99e"
+      }
+    },
+    "humaneval": {
+      "repo_id": "openai/openai_humaneval",
+      "revision": "7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544",
+      "directory": "humaneval",
+      "revision_source": "experiment_download_metadata",
+      "files": {
+        "README.md": "f81cb59f7dae73d1ee1069d7de3ba1c0f9d2bd80f4df6d6990d12bf488e5b5ef",
+        "openai_humaneval/test-00000-of-00001.parquet": "2f2871a15fbc95b6c683043359f4ed8e144c5a1c4f24f25f66bc51f598dfcfb6"
+      }
+    },
+    "gpqa": {
+      "repo_id": "Idavidrein/gpqa",
+      "revision": "83022cefff930aea54f654c0b282e74b9eeda5c6",
+      "directory": "gpqa",
+      "revision_source": "pinned_revision_with_csv_contents_matching_experiment_files",
+      "files": {
+        "README.md": "438b45222c5148b48c9b009014bada9403a965b143ccb3467e6799b876164578",
+        "license.txt": "c4591c2eba3382b05a60e8437b7f67cc428539acbd7081d3ffe3fa55a98132db",
+        "gpqa_diamond.csv": "41d1213cd7a4998605a26c2798500652572007161b3a92817ba46b35befcd305",
+        "gpqa_experts.csv": "ed1c6864ddfe4c8aaf67b665d9901d36ec4fa8c09f08c5c4e5509865bc41a672",
+        "gpqa_extended.csv": "0926ee24949d02ed6748eb75a2611546c34479e30ddc42efd01d6f1681aaa48a",
+        "gpqa_main.csv": "acdeeac8f622267f2cd727d7d474202ea08dec80f7d3c3593b3ef8644f19b8e3"
+      }
+    }
+  }
+}

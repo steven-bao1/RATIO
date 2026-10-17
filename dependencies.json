@@ -1,0 +1,6 @@
+{
+  "vllm": {"url": "https://github.com/vllm-project/vllm.git", "revision": "5204ff5c3feeb96e8a6eea65dfcb78395f90d4d8"},
+  "lighteval": {"url": "https://github.com/huggingface/lighteval.git", "revision": "eee93d7967a6b8c965960f4cada163635691b93e"},
+  "fast-hadamard-transform": {"url": "https://github.com/Dao-AILab/fast-hadamard-transform.git", "revision": "f3dc2c60084cc076e6bb4122621a35cd0ebad4bc"},
+  "xformers": {"url": "https://github.com/facebookresearch/xformers.git", "revision": "f3bc7a78e687f7987a920e7bad0dca61c927c5b4"}
+}
