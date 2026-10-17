@@ -6,8 +6,8 @@
   <a href="https://arxiv.org/abs/2609.39801">
     <img src="https://img.shields.io/badge/arXiv-2609.39801-b31b1b.svg?logo=arxiv" alt="arXiv">
   </a>
-  <a href="https://github.com/steven-bao1/RATIO">
-    <img src="https://img.shields.io/github/stars/steven-bao1/RATIO?style=social" alt="GitHub stars">
+  <a href="https://github.com/steven-bao1/RATIO/stargazers">
+    <img src="https://img.shields.io/github/stars/steven-bao1/RATIO?style=social&amp;label=Stars" alt="GitHub stars">
   </a>
   <a href="https://github.com/steven-bao1/RATIO">
     <img src="https://visitor-badge.laobi.icu/badge?page_id=steven-bao1.RATIO&amp;right_color=violet" alt="Visitors">
@@ -235,4 +235,4 @@ If you find this work useful, please cite:
 
 ## 💡 Acknowledgements
 
-This work is released under the [Apache 2.0 License](https://github.com/XIANGLONGYAN/PT2-LLM/blob/main/LICENSE). Our execution and quantization framework builds on [Quantized-Reasoning-Models](https://github.com/ruikangliu/Quantized-Reasoning-Models). We also thank [vLLM](https://github.com/vllm-project/vllm) and [LightEval](https://github.com/huggingface/lighteval).
+This work is released under the [Apache 2.0 License](LICENSE). Our execution and quantization framework builds on [Quantized-Reasoning-Models](https://github.com/ruikangliu/Quantized-Reasoning-Models). We also thank [vLLM](https://github.com/vllm-project/vllm) and [LightEval](https://github.com/huggingface/lighteval).
